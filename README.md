@@ -4,7 +4,7 @@ Private [pi](https://github.com/earendil-works/pi) extensions.
 
 | Extension | What it does |
 |---|---|
-| `background-bash.ts` | Replaces `bash` with an always-background runner: commands finishing within 2s return inline, while longer commands move to the background automatically, write output to a temp log, and deliver a follow-up message on exit. Adds `bash_output` and `bash_kill` tools plus `/jobs`. |
+| `background-bash.ts` | Replaces `bash` with a minimal non-blocking runner: commands run inline by default, detach to background immediately on user input (`steer`), or start in background with `background: true`. Logs write to `/tmp/pi-bash-*.log` and exits send a metadata-only notice when idle or on `agent_settled` (`read` the log to inspect, `kill -- -<pid>` to stop). |
 | `subagent.ts` | Starts a background consultation with a stronger read-only model (`openrouter/openai/gpt-6-astra`, `--thinking max`). The tool returns a job id immediately and the answer arrives later as a follow-up message, so it never blocks the parent turn. Slash commands: `/subagent`, `/subagents`, `/subagent-kill`. |
 | `tps.ts` | Tokens-per-second meter in the status line. |
 
